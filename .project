@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>Sistema Auxiliar Solbrilhante</name>
+	<comment></comment>
+	<projects>
+		<project>Bibliotecas YII</project>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.wst.validation.validationbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.dltk.core.scriptbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.wst.common.project.facet.core.builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.aptana.editor.php.aptanaPhpBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.aptana.ide.core.unifiedBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>com.aptana.editor.php.phpNature</nature>
+		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
+		<nature>org.eclipse.php.core.PHPNature</nature>
+	</natures>
+	<variableList>
+		<variable>
+			<name>LINUX_Y117</name>
+			<value>file:/media/BLACKING/WORKSPACE/Bibliotecas%20YII/1.1.7/framework</value>
+		</variable>
+		<variable>
+			<name>Y117</name>
+			<value>file:/B:/WORKSPACE/Bibliotecas%20YII/1.1.7/framework</value>
+		</variable>
+	</variableList>
+</projectDescription>

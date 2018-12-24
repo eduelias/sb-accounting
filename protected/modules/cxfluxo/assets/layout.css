@@ -1,0 +1,158 @@
+.right {
+	float: right;
+	display:block;
+	border: 1px solid #C9E0ED;
+	padding: 10px;
+	width: 450px;
+}
+.left {
+	float: left;
+	display:block;
+	margin-right: 10px;
+	padding:10px;
+	border: 1px solid #C9E0ED;
+	width: 450px;
+}
+div.form .hint {
+  color: #999999;
+  line-height: 14px;
+  margin: 0;
+  padding: 0;
+}
+div.outer {
+	display: inline-block;
+}
+div.titulo {
+	color: #298DCD;
+	margin:0;
+	padding:5px;
+}
+div.container {
+	background: #B7D6E7;
+	display: table-cell;
+	border-left: 5px solid #6FACCF;
+}
+div.container div.body {
+	padding: 15px;
+	background: #EFFDFF;
+}
+div.items b a {
+	padding: 10px;
+	border: 1px solid #000;
+	display: inline-block;
+	text-align:center;
+	width: 60px;
+}
+div.items span.star-rating-control a {
+	border: 0 !important;
+}
+.urgente {
+	background: url('../../images/grid_sprite.png') no-repeat scroll 0 -18px transparent;
+	cursor: pointer;
+	display: inline-block;
+	height: 18px;
+	padding-left: 14px;
+}
+.ch_status {
+	background: url("../../images/fmap16.png") no-repeat scroll -176px -192px transparent;
+	cursor: pointer;
+	display: inline-block;
+	height: 16px;
+	width: 16px;
+}
+.ch_comentario {
+	background: url("../../images/icons.png") no-repeat scroll -40px -0px transparent;
+	cursor: pointer;
+	display: inline-block;
+	height: 16px;
+	width: 16px;
+}
+.ch_editar {
+	background: url("../../images/fmap16.png") no-repeat scroll -48px -64px transparent;
+	cursor: pointer;
+	display: inline-block;
+	height: 16px;
+	width: 16px;
+}
+.ico_imagem{
+	background: url("../../images/fmap16.png") no-repeat scroll 0 -96px transparent;
+    cursor: pointer;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+}
+.alerta {
+	background: url("../../images/grid_sprite.png") no-repeat scroll 0 0 transparent;
+	cursor: pointer;
+	display: inline-block;
+	height: 18px;
+	padding-left: 14px;
+}
+.lock {
+	background: url("../../images/grid_sprite.png") no-repeat scroll 0 -128px transparent;
+	cursor: pointer;
+	display: inline-block;
+	height: 14px;
+	padding-left: 14px;
+}
+.normal {
+	background: url("../../images/grid_sprite.png") no-repeat scroll 0 -36px transparent;
+	cursor: pointer;
+	display: inline-block;
+	height: 18px;
+	padding-left: 14px;
+}
+.ic_novo {
+	background: url("../../images/formatmap32x32.png") no-repeat scroll -384px -352px transparent;
+	cursor: pointer;
+	display: inline-block;
+	height: 28px;
+	padding-left: 26px;
+}
+.ic_oper {
+	background: url("../../images/fmap16.png") no-repeat scroll -192px 0 transparent;
+	cursor: pointer;
+	display: inline-block;
+	height: 16px;
+	width: 16px;
+}
+.grid-view table.items th, .grid-view table.items td {
+	border: none;
+	border-bottom: 1px solid lightGray;
+}
+.bold {
+	font-weight:bold !important;
+}
+.to_me {
+	background: url("../../images/strip.png") no-repeat scroll -958px -2px transparent;
+	cursor: pointer;
+	display: inline-block;
+	height: 18px;
+	padding-left: 13px;
+	_width:18px;
+	_background-position-x: -960px;
+	width: 6px;
+}
+input.cal{
+	font-size:0.9em;
+	width:67px;
+	text-align:right;
+	background: url("../../images/icons.png") no-repeat scroll -102px -160px white;
+    cursor: pointer;
+    display: inline-block;
+    height: 19px;
+    padding-left: 16px;
+}
+.grid-view table.items th, .grid-view table.items td {
+		font-size:0.8em !important;
+		color: #303030;
+}
+.grid-view TABLE.items {
+	_width:95% !important;
+}
+div.form label {
+	margin-bottom:-12px;
+}
+div.form .row {
+	line-height:32px;
+}

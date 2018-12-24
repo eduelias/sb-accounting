@@ -1,0 +1,44 @@
+div.w_tabs{
+		font-family:arial, helvetica, sans-serif;
+		font-size:13px;
+	}
+
+	ul.w_tab,
+	ul.w_tab li{
+		height:52px;
+		line-height:52px;
+		font-weight:bold;
+	}
+
+	ul.w_tab{
+		/*background:url('/siged/protected/widgets/MTab/_header_gray.png') repeat-x;*/
+		margin:0;
+		padding:0;
+		border-top:3px solid #ddd;
+	}
+
+	ul.w_tab li{
+		height:47px;
+		float:left;
+		padding:0px 14px;
+		margin:0;
+		margin-top:-3px;
+		border-right:1px solid #ddd;
+		border-top:3px solid #ddd;
+		list-style:none;
+		cursor:pointer;
+	}
+
+	ul.w_tab li:hover{
+		background:rgba(0,0,0,.05);
+	}
+
+	ul.w_tab li.active{
+		background:#fff;
+		height:52px;
+		border-top:3px solid orange;
+	}
+
+	div.w_contents{
+		padding:10px 8px;
+	}
