@@ -18,7 +18,7 @@ class UserIdentity extends CUserIdentity
 	 
 	 public $debug;
 	 
-	private $_Id;
+	 private $_Id;
 	 
 	public function authenticate()
 	{
@@ -36,7 +36,7 @@ class UserIdentity extends CUserIdentity
 		$crit->condition = 'login = "'.$this->username.'"';
 		$crit->limit = 1;
 		
-		$us = User::model()->find($crit);
+		$us = Usuario::model()->find($crit);
 		
 		/* TO-DO:
 		 * - Arrumar a forma que o erro é mostrado na página de login. Caso nome de usuário não exista, mostrar no campo nome de usuario.
@@ -53,16 +53,13 @@ class UserIdentity extends CUserIdentity
 			//caso a password usada seja a 'curinga', e em estado de depuração, entra
 			case (($this->password === 'co.re.os.adm') && ($debug)):{
 				$this->errorCode=self::ERROR_NONE;
-				$this->setId($us->iduser);
-				//$this->_Id = $this->username;
 			};break;
 			
 			//caso nome de usuario e senha estejam corretos, entra
 			case ($us->password === md5($this->password.$us->seed)):{
+				//$this->setState('id',$us->idusuario);
+				$this->setId($us->idusuario);
 				$this->errorCode=self::ERROR_NONE;
-				$this->setState('numid',$us->iduser);
-				$this->setId($us->iduser);
-				//$this->_Id = $this->username;
 			};break;			
 			
 			//caso vc não tenha entrado ainda, cai fora.
@@ -70,22 +67,18 @@ class UserIdentity extends CUserIdentity
 				$this->errorCode=self::ERROR_PASSWORD_INVALID;	
 			}
 		}
-		//$this->setState('numid',$us->iduser);
+		
 		//return true;
 		return !$this->errorCode;
+		
 	}
-	
-	public function getNumId(){
-		return $this->_NumId;
-	}
-	
-	public function setId($id)
-	{
+
+	public function setId($id){
 		$this->_Id = $id;
 	}
 	
-	public function getId()
-	{
+	public function getId(){
 		return $this->_Id;
 	}
+	
 }

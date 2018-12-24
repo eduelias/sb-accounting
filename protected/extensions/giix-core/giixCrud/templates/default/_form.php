@@ -4,9 +4,6 @@
  * - $this: the CrudCode object
  */
 ?>
-<?php echo '<?php $dialog = $this->beginWidget(\'application.widgets.SComps.SDiag\', array(\'id\'=>\'diag'.$this->modelClass.'\'));?>'."\r\n"; ?>
-<?php echo '<?php $this->endWidget(); ?>' ?>
-
 <div class="form">
 
 <?php $ajax = ($this->enable_ajax_validation) ? 'true' : 'false'; ?>
@@ -17,8 +14,10 @@ $form = $this->beginWidget('GxActiveForm', array(
 	'enableAjaxValidation' => <?php echo $ajax; ?>,
 ));
 <?php echo '?>'; ?>
+
+
 	<p class="note">
-		<span class="required">*</span> Campo Obrigat&oacute;rio.
+		<span class=\"required\">*</span> Campo Obrigat&oacute;rio.
 	</p>
 
 	<?php echo "<?php echo \$form->errorSummary(\$model); ?>\n"; ?>
@@ -34,12 +33,10 @@ $form = $this->beginWidget('GxActiveForm', array(
 <?php endforeach; ?>
 <?php foreach ($this->getRelations($this->modelClass) as $relation): ?>
 <?php if ($relation[1] == GxActiveRecord::HAS_MANY || $relation[1] == GxActiveRecord::MANY_MANY): ?>
-	<fieldset>
-		<legend><?php echo $this->pluralize($this->class2name($relation[3])); ?></legend>
-		<div class='cbox'>
+	<div class="row">
+		<b><label><?php echo $this->pluralize($this->class2name($relation[3])); ?></label></b><br>
 		<?php echo '<?php ' . $this->generateActiveRelationField($this->modelClass, $relation) . "; ?>\n"; ?>
-		</div>
-	</fieldset>
+	</div>
 <?php endif; ?>
 <?php endforeach; ?>
 

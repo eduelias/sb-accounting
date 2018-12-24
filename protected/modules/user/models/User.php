@@ -1,27 +1,34 @@
 <?php
 
-Yii::import('application.modules.user.models._base.BaseUser');
-
-class User extends BaseUser
+/**
+ * This is the model class for table "cad_usuario".
+ *
+ * The followings are the available columns in table 'cad_usuario':
+ * @property integer $idusuario
+ * @property integer $idclifor
+ * @property string $ativo
+ * @property string $password
+ * @property string $login
+ * @property string $seed
+ *
+ * The followings are the available model relations:
+ * @property CadClifor $idclifor0
+ */
+class User extends CActiveRecord
 {
 	public $password2;
-	 
+	
 	private static $_userlist;
 	
 	private static $_users;
 	
-	/** 
+	/**
 	 * Returns the static model of the specified AR class.
 	 * @return CadUsuario the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
-	}
-	
-	public static function isGerente(){
-		$x = Rights::getAssignedRoles(Yii::app()->user->id);
-		return (in_array('Gerente do Sistema',array_keys($x)));
 	}
 
 	public static function getUserlist()
@@ -86,6 +93,20 @@ class User extends BaseUser
 		);
 	}
 
+	/**
+	 * @return array relational rules.
+	 */
+	public function relations()
+	{
+		// NOTE: you may need to adjust the relation name and the related
+		// class name for the relations automatically generated below.
+		return array(
+			'setor'=>array(self::MANY_MANY, 'Setor', 'rel_User_setor(iduser, idsetor)'),
+			'setor_responsavel'=>array(self::HAS_MANY, 'Setor', 'iduser'),
+			//'clifor' => array(self::BELONGS_TO, 'Clifor', 'idclifor'),
+		);
+	}
+
 	//BEFORE SAVE: Fazendo um seed e arrumando a password pro formato do BD
     protected function beforeSave(){
     		
@@ -99,10 +120,41 @@ class User extends BaseUser
 		
 		return true;
 	}
+	/**
+	 * @return array customized attribute labels (name=>label)
+	 */
+	public function attributeLabels()
+	{
+		return array(
+			'iduser' => 'Idusuario',
+			'nome'=>'Nome',
+			'password' => 'Senha',
+			'password2' => 'Confirmação',
+			'login' => 'Login',
+			'seed' => 'Seed',
+			'email'=>'Email'
+		);
+	}
 
-	protected function afterSave(){
-		Rights::assign('Authenticated', $this->iduser);
-		
-		return true;
+	/**
+	 * Retrieves a list of models based on the current search/filter conditions.
+	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
+	 */
+	public function search()
+	{
+		// Warning: Please modify the following code to remove attributes that
+		// should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('iduser',$this->iduser);
+		$criteria->compare('email',$this->email,true);
+		$criteria->compare('password',$this->password,true);
+		$criteria->compare('login',$this->login,true);
+		$criteria->compare('seed',$this->seed,true);
+
+		return new CActiveDataProvider(get_class($this), array(
+			'criteria'=>$criteria,
+		));
 	}
 }

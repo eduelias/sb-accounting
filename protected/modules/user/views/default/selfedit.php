@@ -12,4 +12,4 @@ $this->menu=array(
 
 <h1>Editando meus dados:</h1>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model, 'self'=>true)); ?>
+<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

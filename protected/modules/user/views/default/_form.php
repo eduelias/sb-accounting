@@ -31,8 +31,7 @@
 		<?php echo $form->labelEx($model,'password2'); ?>
 		<?php echo $form->passwordField($model,'password2',array('size'=>20,'maxlength'=>10)); ?>
 		<?php echo $form->error($model,'password'); ?>
-	</div>
-	
+
 	<div class="row">
 		<?php echo $form->labelEx($model,'email'); ?>
 		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>255)); ?>

@@ -45,21 +45,12 @@ div.form select
 	margin: 0.2em 0 0.5em 0;
 }
 
-div.form input[type=checkbox]{
-	width:auto;
-}
-
-div.form input[type=submit]{
-	width:300px;
-}
-
 div.form fieldset
 {
 	border: 1px solid #DDD;
 	padding: 10px;
 	margin: 0 0 10px 0;
     -moz-border-radius:7px;
- 
 }
 
 div.form label
@@ -67,65 +58,11 @@ div.form label
 	font-weight: bold;
 	font-size: 0.9em;
 	display: block;
-	margin-bottom:-12px;
 }
 
 div.form .row
 {
-    margin: 5px 0 5px 0;
-    padding: 4px;
-    width: 70%;
-    line-height:32px;
-}
-
-fieldset div.row {
-	display: inline-block;
-	float:left;
-	width:23% !important;
-}
-
-div.row .date {
-	display: inline-block;
-	width:150px;
-}
-
-div.cbox li:hover{
-	background: #CCC;
-}
-
-div.cbox{
-	float: left;
-	width:100%;
-	padding: 3px;
-}
-
-div.cbox br{
-	line-height: 0px;
-}
-
-div.cbox li{
-	float:left;
-	min-width: 100px;
-	list-style: none;
-	padding: 4px;
-	margin-right: 4px;
-}
-
-div.cbox li:hover{
-	background: #DDD;
-}
-
-span.lab {
-	margin: 3px;
-}
-
-span.inpt{
-	float:right;
-}
-
-div.date input{
-	width:100px;
-	float:left;
+	margin: 5px 0;
 }
 
 div.form .hint
@@ -187,8 +124,7 @@ div.form .errorSummary
 div.form .errorMessage
 {
 	color: red;
-	font-size: 0.8em;
-	line-height: 0.8em;
+	font-size: 0.9em;
 }
 
 div.form .errorSummary p
@@ -209,21 +145,7 @@ div.wide.form label
 	margin-right: 10px;
 	position: relative;
 	text-align: right;
-	width: 190px;
-}
-div.ui-dialog {
-	font-size: 0.9em;
-}
-
-div.wide.form fieldset label {
-	padding:0px !important;
-	width: auto;
-}
-
-span.lab label {
 	width: 100px;
-	float: right;
-	margin-left: 5px;
 }
 
 div.wide.form .row
@@ -234,5 +156,12 @@ div.wide.form .row
 div.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage
 {
 	clear: left;
-	/*padding-left: 110px;*/
+	padding-left: 110px;
+}
+
+input[type=text],
+input[type=password]{
+	padding:5px 8px;
+	border:1px solid #aaa;
+	font-size:13px;
 }

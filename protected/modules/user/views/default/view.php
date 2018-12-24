@@ -1,7 +1,7 @@
 <?php
 $this->breadcrumbs=array(
 	'User'=>array('index'),
-	$model->nome,
+	$model->iduser,
 );
 
 $this->menu=array(

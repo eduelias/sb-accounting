@@ -6,23 +6,24 @@
 ?>
 <?php
 echo "<?php\n";
-$nameColumn=$this->guessNameColumn($this->tableSchema->columns);
-$label= $this->class2name($this->modelClass);//$this->pluralize($this->class2name($this->modelClass));
-echo "\$this->breadcrumbs=array(
-	'$label'=>array('index'),
-	\$model->{$nameColumn},
+$label = $this->pluralize($this->class2name($this->modelClass));
+echo "\$this->breadcrumbs = array(
+	'$label' => array('index'),
+	GxHtml::valueEx(\$model),
 );\n";
 ?>
-$this->menu = array(
-	array('label'=>'Listar', 'url'=>array('index')),
-	array('label'=>'Inserir', 'url'=>array('create')),	
-	array('label'=>'Admin', 'url'=>array('admin')),
-	array('label'=>' | '),
-	array('label'=>' [Ver] '),
-	array('label'=>' Editar ', 'url'=>array('update', 'id'=>$model-><?php echo $this->tableSchema->primaryKey; ?>)),
-	array('label'=>' Excluir ', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model-><?php echo $this->tableSchema->primaryKey; ?>),'confirm'=>'Tem certeza que deseja excluir este item?')),
-)
+
+$this->menu=array(
+	array('label'=>Yii::t('app', 'List') . ' <?php echo $this->modelClass; ?>', 'url'=>array('index')),
+	array('label'=>Yii::t('app', 'Create') . ' <?php echo $this->modelClass; ?>', 'url'=>array('create')),
+	array('label'=>Yii::t('app', 'Update') . ' <?php echo $this->modelClass; ?>', 'url'=>array('update', 'id' => $model-><?php echo $this->tableSchema->primaryKey; ?>)),
+	array('label'=>Yii::t('app', 'Delete') . ' <?php echo $this->modelClass; ?>', 'url'=>'#', 'linkOptions' => array('submit' => array('delete', 'id' => $model-><?php echo $this->tableSchema->primaryKey; ?>), 'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>Yii::t('app', 'Manage') . ' <?php echo $this->modelClass; ?>', 'url'=>array('admin')),
+);
 ?>
+
+<h1><?php echo '<?php'; ?> echo Yii::t('app', 'View'); <?php echo '?>'; ?> <?php echo $this->modelClass . " #<?php echo GxHtml::encode(GxHtml::valueEx(\$model)); ?>"; ?></h1>
+
 <?php echo '<?php'; ?> $this->widget('zii.widgets.CDetailView', array(
 	'data' => $model,
 	'attributes' => array(

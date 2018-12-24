@@ -61,7 +61,7 @@ class Menu extends BaseMenu
 					
 				}break;
 			}
-			$n['visible'] = (Yii::app()->user->checkAccess(str_replace('/','.',$model->url)))? true : false;
+			
 			$ret[] = $n;
 		}
 

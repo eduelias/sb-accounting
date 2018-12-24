@@ -4,7 +4,7 @@
 *
 * @author Christoffer Niska <cniska@live.com>
 * @copyright Copyright &copy; 2010 Christoffer Niska
-* @version 1.3.0
+* @version 1.2.0
 * 
 * DO NOT CHANGE THE DEFAULT CONFIGURATION VALUES!
 * 
@@ -22,7 +22,7 @@
 class RightsModule extends CWebModule
 {
 	/**
-	* @property string the name of the role with superuser privileges.
+	* @property string the name of the role with superuser priviledges.
 	*/
 	public $superuserName = 'Admin';
 	/**
@@ -213,6 +213,6 @@ class RightsModule extends CWebModule
 	*/
 	public function getVersion()
 	{
-		return '1.3.0';
+		return '1.2.0';
 	}
 }

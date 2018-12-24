@@ -7,12 +7,10 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'Auxiliar WEB Solbrilhante',
+	'name'=>'SiGED - Webdist',
 	'language'=>'pt_br',
-	'sourceLanguage'=>'en_us',
-	'localeDataPath'=>'protected/i18n/data',
+	'sourceLanguage'=>'pt_br',
 	
-	//'locale'=>'pt_br',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -23,73 +21,60 @@ return array(
 		'application.components.*',
 		'application.modules.rights.*',
 		'application.modules.rights.components.*',
+		'application.modules.cad_clifor.models.*',
+		'application.modules.user.models.*',
 		'application.modules.user.*',
-		'application.modules.user.models.*', 
-		'application.modules.nc.*',
-		'application.modules.nc.models.*',
-		'application.modules.arquivo.*',
-		'application.modules.arquivo.models,*',
-		'application.modules.cad_produto.*',
-		'application.modules.cad_produto.models.*',
-		'application.modules.cad_produto.components.*',
-		'application.modules.clifor.*',
-		'application.modules.clifor.models.*',
-		'application.modules.clifor.components.*',
-		'application.modules.pedido.*',
-		'application.modules.pedido.models.*',
-		'application.modules.pedido.components.*',	
-		'application.modules.cxfluxo.*',
-		'application.modules.cxfluxo.models.*',
-		'application.modules.cxfluxo.components.*',
-		'application.widgets.*',
-		'application.extensions.*',
 		'ext.giix-components.*',
 	),
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
+		'cad_clifor',
 		'user',
-		
-		'cad_produto',
-		
-		'cxfluxo',
-		
-		'clifor',
-		
-		'svn',
-		
-		'nc',
-		
-		'arquivo',
-		
-		'pedido',
-		
+		/*
+		 'rights'=>array(
+			'superuserName'=>'Admin', // Name of the role with super user privileges.
+			'authenticatedName'=>'Authenticated', // Name of the authenticated user role.
+			'guestName'=>'Guest', // Name of the guest role.
+			'defaultRoles'=>null, // List of role names that are assigned to all users.
+			'userClass'=>'User', // Name of the User model class.
+			'userIdColumn'=>'id_number', // Name of the user id column in the database.
+			'userNameColumn'=>'username', // Name of the user name column in the database.
+			'enableBizRule'=>true, // Whether to enable authorization item business rules.
+			'enableBizRuleData'=>false, // Whether to enable data for business rules.
+			'flashSuccessKey'=>'RightsSuccess', // Key to use for setting success flash messages.
+			'flashErrorKey'=>'RightsError', // Key to use for setting error flash messages.
+			'layout'=>'rights.views.layouts.rights', // Layout to use for displaying Rights.
+			'baseUrl'=>'/rights', // Base URL for Rights. Change if module is nested.
+			'cssFile'=>'rights.css', // Style sheet file to use for Rights.
+			'install'=>false, // Whether to enable installer.
+		 	'superUsers'=>array(
+		 * 		1=>admin
+		 * 		2=>nsoq
+		 * 	)
+			),
+		 */
 		'rights'=>array(
 		   'install'=>false,	   
 		   //'superUserRole'=>'Admin',
-		   'authenticatedName'=>'Authenticated',		  
 		   'superuserName'=>'admin',
-		   'userIdColumn'=>'iduser',
+		   'userIdColumn'=>'idusuario',
 		   'userNameColumn'=>'login',
-		   'userClass'=>'User',
+		   'userClass'=>'Usuario',
 		   'enableBizRule'=>'false',
+		   //'layout'=>'webroot.themes.gui.views.layouts.main',
 		   'debug'=>true
 		),
-		
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
-			'password'=>'gii.senha', 
-			'generatorPaths' => array(
-				'ext.giix-core',
-			),
+			'password'=>'gii.senha',
 		 	// If removed, Gii defaults to localhost only. Edit carefully to taste.
-			'ipFilters'=>array('*'),
-
-		//	'ipFilters'=>array('192.168.2.201','::1','192.168.2.214', '187.13.167.23','189.*'),
-
-		),  
+			//'ipFilters'=>array('200.251.60.2','::1'),
+			'ipFilters'=>array('189.107.147.74'),
+		),
+		
 	),
- 
+
 	// application components
 	'components'=>array(
 		'user'=>array(
@@ -98,25 +83,26 @@ return array(
 			'allowAutoLogin'=>true,
 		),
 		// uncomment the following to enable URLs in path-format
-		'coreMessages'=>array('basePath'=>'protected/messages'),
-		/*'urlManager'=>array(
+		/*
+		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'rules'=>array(
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
-		),*/
+		),
+		*/
 		/*'db'=>array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
 		),*/
 		// uncomment the following to use a MySQL database
 		
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=eduardo_siged',
+			'connectionString' => 'mysql:host=localhost;dbname=webdist',
 			'emulatePrepare' => true,
-			'username' => 'eduardo_siged',
-			'password' => 'siged01',
+			'username' => 'webdist',
+			'password' => 'webdist01',
 			'charset' => 'utf8',
 		),
 		
@@ -125,6 +111,8 @@ return array(
 			'connectionID'=>'db',
 			'defaultRoles'=>array('Guest')
 		),
+		
+		
 		
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
@@ -135,7 +123,7 @@ return array(
 			'routes'=>array(
 				array(
 					'class'=>'CFileLogRoute',
-					'levels'=>'error, warning',
+					'levels'=>'info, error, warning',
 				),
 				// uncomment the following to show log messages on web pages
 				/*
@@ -151,6 +139,6 @@ return array(
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'ti@solbrilhante.ind.br',
+		'adminEmail'=>'eduardo@coresolucoes.com.br',
 	),
 );

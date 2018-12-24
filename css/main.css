@@ -15,6 +15,15 @@ body
 	border: 1px solid #C9E0ED;
 }
 
+div#c_container {
+    margin: 5px 20px 20px;
+}
+
+div#conteudo {
+    font-size: 12px;
+    overflow: auto !important;
+}
+
 #header
 {
 	margin: 0;

@@ -6,18 +6,19 @@
 ?>
 <?php
 echo "<?php\n";
-$label=$this->class2name($this->modelClass);
-echo "\$this->breadcrumbs=array(
-	'$label'=>array('index'),
-	'Admin',
+$label=$this->pluralize($this->class2name($this->modelClass));
+echo "\$this->breadcrumbs = array(
+	'$label' => array('index'),
+	Yii::t('app', 'Manage'),
 );\n";
 ?>
 
-$this->menu=array(
-	array('label'=>'Listar', 'url'=>array('index')),
-	array('label'=>'Inserir', 'url'=>array('create')),
-	array('label'=>'[Admin]')
-);
+$this->menu = array(
+		array('label'=>Yii::t('app', 'List') . ' <?php echo $this->modelClass; ?>',
+			'url'=>array('index')),
+		array('label'=>Yii::t('app', 'Create') . ' <?php echo $this->modelClass; ?>',
+		'url'=>array('create')),
+	);
 
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
@@ -32,14 +33,16 @@ $('.search-form form').submit(function(){
 });
 ");
 ?>
+
+<h1><?php echo '<?php'; ?> echo Yii::t('app', 'Manage'); ?> <?php echo $this->pluralize($this->class2name($this->modelClass)); ?></h1>
+
 <p>
-Podem ser usados símbolos de comparação (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
-ou <b>=</b>) no inicio de cada termo para definir como será feita a busca.
+You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&gt; or =) at the beginning of each of your search values to specify how the comparison should be done.
 </p>
 
-<?php echo "<?php echo GxHtml::link(Yii::t('yii', 'Advanced Search'), '#', array('class' => 'search-button')); ?>"; ?>
+<?php echo "<?php echo GxHtml::link(Yii::t('app', 'Advanced Search'), '#', array('class' => 'search-button')); ?>"; ?>
 
-<div class="search-form" style="display:none">
+<div class="search-form">
 <?php echo "<?php \$this->renderPartial('_search', array(
 	'model' => \$model,
 )); ?>\n"; ?>

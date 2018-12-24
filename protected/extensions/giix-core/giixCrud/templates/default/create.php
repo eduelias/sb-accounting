@@ -6,19 +6,21 @@
 ?>
 <?php
 echo "<?php\n";
-$label=$this->class2name($this->modelClass);
-echo "\$this->breadcrumbs=array(
-	'$label'=>array('index'),
-	'Inserir',
+$label=$this->pluralize($this->class2name($this->modelClass));
+echo "\$this->breadcrumbs = array(
+	'$label' => array('index'),
+	Yii::t('app', 'Create'),
 );\n";
 ?>
 
-$this->menu=array(
-	array('label'=>'Listar', 'url'=>array('index')),
-	array('label'=>'[Inserir]'),
-	array('label'=>'Admin', 'url'=>array('admin')),
+$this->menu = array(
+	array('label'=>Yii::t('app', 'List') . ' <?php echo $this->modelClass; ?>', 'url' => array('index')),
+	array('label'=>Yii::t('app', 'Manage') . ' <?php echo $this->modelClass; ?>', 'url' => array('admin')),
 );
 ?>
+
+<h1><?php echo '<?php'; ?> echo Yii::t('app', 'Create'); <?php echo '?>'; ?> <?php echo $this->modelClass; ?></h1>
+
 <?php echo "<?php\n"; ?>
 $this->renderPartial('_form', array(
 		'model' => $model,

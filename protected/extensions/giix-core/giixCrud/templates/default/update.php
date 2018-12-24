@@ -6,23 +6,20 @@
 ?>
 <?php
 echo "<?php\n";
-$nameColumn=$this->guessNameColumn($this->tableSchema->columns);
-$label=$this->class2name($this->modelClass);
-echo "\$this->breadcrumbs=array(
-	'$label'=>array('index'),
-	\$model->{$nameColumn}=>array('view','id'=>\$model->{$this->tableSchema->primaryKey}),
-	'Editar',
+$label = $this->pluralize($this->class2name($this->modelClass));
+echo "\$this->breadcrumbs = array(
+	'$label' => array('index'),
+	GxHtml::valueEx(\$model) => array('view', 'id' => GxActiveRecord::extractPkValue(\$model, true)),
+	Yii::t('app', 'Update'),
 );\n";
 ?>
+
 $this->menu = array(
-	array('label'=>'Listar', 'url'=>array('index')),
-	array('label'=>'Inserir', 'url'=>array('create')),
-	array('label'=>'Publicas', 'url'=>array('admin')),
-	array('label'=>' | '), 
-	array('label'=>' Ver  ', 'url'=>array('view', 'id'=>$model-><?php echo $this->tableSchema->primaryKey; ?>)),
-	array('label'=>' [Editar] '),
-	array('label'=>' Excluir ', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model-><?php echo $this->tableSchema->primaryKey; ?>),'confirm'=>'Tem certeza que deseja excluir este item?')),
-)
+	array('label' => Yii::t('app', 'List') . ' <?php echo $this->modelClass; ?>', 'url'=>array('index')),
+	array('label' => Yii::t('app', 'Create') . ' <?php echo $this->modelClass; ?>', 'url'=>array('create')),
+	array('label' => Yii::t('app', 'View') . ' <?php echo $this->modelClass; ?>', 'url'=>array('view', 'id' => GxActiveRecord::extractPkValue($model, true))),
+	array('label' => Yii::t('app', 'Manage') . ' <?php echo $this->modelClass; ?>', 'url'=>array('admin')),
+);
 ?>
 
 <h1><?php echo '<?php'; ?> echo Yii::t('app', 'Update'); <?php echo '?>'; ?> <?php echo $this->modelClass . " #<?php echo GxHtml::encode(GxHtml::valueEx(\$model)); ?>"; ?></h1>

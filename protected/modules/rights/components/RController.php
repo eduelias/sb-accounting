@@ -27,7 +27,7 @@ class RController extends CController
 	/**
 	* The filter method for 'rights' access filter.
 	* This filter is a wrapper of {@link CAccessControlFilter}.
-	* @param CFilterChain $filterChain the filter chain that the filter is on.
+	* @param CFilterChain the filter chain that the filter is on.
 	*/
 	public function filterRights($filterChain)
 	{
@@ -46,7 +46,7 @@ class RController extends CController
 
 	/**
 	* Denies the access of the user.
-	* @param string $message the message to display to the user.
+	* @param string the message to display to the user.
 	* This method may be invoked when access check fails.
 	* @throws CHttpException when called unless login is required.
 	*/
@@ -59,6 +59,6 @@ class RController extends CController
 		if( $user->isGuest===true )
 			$user->loginRequired();
 		else
-			throw new CHttpException(403, $message);
+			throw new CHttpException(403, $user = Yii::app()->user->getId().', '.$message);
 	}
 }

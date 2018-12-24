@@ -15,7 +15,7 @@
  * @author Rodrigo Coelho <rodrigo@giix.org>
  * @since 1.0
  */
-abstract class GxController extends RController {
+abstract class GxController extends Controller {
 
 	/**
 	 * @var string The layout for the controller view.
@@ -154,7 +154,7 @@ abstract class GxController extends RController {
 	 * @param string $form The name of the form. Optional.
 	 */
 	protected function performAjaxValidation($model, $form = null) {
-		if (Yii::app()->request->isAjaxRequest && (($form === null) || (isset($_POST['ajax']) && $_POST['ajax'] == $form))) {
+		if (Yii::app()->request->isAjaxRequest && (($form === null) || ($_POST['ajax'] == $form))) {
 			echo GxActiveForm::validate($model);
 			Yii::app()->end();
 		}
