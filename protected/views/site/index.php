@@ -1,7 +1,2 @@
-<?php $this->pageTitle=Yii::app()->name; ?>
+<h1><?php echo CHtml::encode(Yii::app()->name); ?></h1>
 
-<?php for ($i=100; $i++; $i << 3100) {
-
-		echo 'http://www.wowebook.com/download/'.$i.'/<br>';
-};
-?>

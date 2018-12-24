@@ -10,12 +10,6 @@
 class <?php echo $this->controllerClass; ?> extends <?php echo $this->baseControllerClass; ?> {
 
 	public $titulo = '<?php echo $this->modelClass; ?>';
-	
-	public function init() {
-		
-		if (method_exists($this->module,'registerScripts'))
-			$this->module->registerScripts();
-	}
 <?php 
 	$authpath = 'ext.giix-core.giixCrud.templates.default.auth.';
 	Yii::app()->controller->renderPartial($authpath . $this->authtype);
@@ -45,41 +39,14 @@ class <?php echo $this->controllerClass; ?> extends <?php echo $this->baseContro
 <?php else: ?>
 			if ($model->save()) {
 <?php endif; ?>
-				if (Yii::app()->request->isAjaxRequest) {
-					$detalhamento = $model->representingColumn();
-					echo CJSON::encode(
-							array(
-									'status' => 'sucess',
-									'div' => 'Inserido com sucesso!',
-									'tag' => CHtml::tag('option',
-											array(
-													'value' => $model-><?php echo $this->tableSchema->primaryKey; ?>
-											),
-											CHtml::encode($model->$detalhamento),
-											true),
-									'id' => $model-><?php echo $this->tableSchema->primaryKey; ?>,
-							));
+				if (Yii::app()->request->isAjaxRequest)
 					Yii::app()->end();
-				}else
+				else
 					$this->redirect(array('view', 'id' => $model-><?php echo $this->tableSchema->primaryKey; ?>));
 			}
 		}
 
-		if (Yii::app()->request->isAjaxRequest) {
-			echo CJSON::encode(
-					array(
-							'status' => 'failure',
-							'div' => $this->renderPartialWithHisOwnClientScript(
-									'_form', array(
-										'model' => $model
-									), true)
-					));
-			exit;
-		} else {
-			$this->render('create', array(
-				'model' => $model
-			));
-		}
+		$this->render('create', array( 'model' => $model));
 	}
 
 	public function actionUpdate($id) {

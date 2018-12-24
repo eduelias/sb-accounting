@@ -156,7 +156,7 @@ ul.toolbarTop li ul li{
 
 ul.toolbarTop li ul{
     display:none;
-    margin-left:-9px;
+    margin-left:-19px;
     background:#fff;
     position:absolute;
     height:auto;
@@ -430,7 +430,8 @@ div#body{
     margin:0px;
     padding:0;
     float:left;
-    min-width:400px;
+    min-width:250px;
+    width:300px;
     height:auto;
     border:1px solid #9f9e9e;
     background:#fff;

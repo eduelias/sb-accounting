@@ -1,7 +1,14 @@
+<style>
+div#menu {
+	float:none !important;
+	width:800px !important;
+}
+</style>
 <?php $this->beginContent(Rights::module()->appLayout); ?>
 
-<div id="rights" class="container">
 
+<div id="rights" class="container">
+	
 	<div id="content">
 
 		<?php if( $this->id!=='install' ): ?>
@@ -16,9 +23,9 @@
 
 		<?php $this->renderPartial('/_flash'); ?>
 
-		<?php echo $content; ?>
-
-	</div><!-- content -->
+			<?php echo $content; ?>
+		</div>
+	<!-- content -->
 
 </div>
 

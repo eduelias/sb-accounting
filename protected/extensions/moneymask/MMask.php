@@ -37,7 +37,7 @@ class MMask extends CWidget {
         $assets = dirname(__FILE__) . '/' . 'assets';
         $this->assetsPath = Yii::app()->getAssetManager()->publish($assets);
         Yii::app()->getClientScript()->registerScriptFile($this->assetsPath . '/' . 'jquery.maskMoney.js');
-        //Yii::app()->clientScript->registerCoreScript('jquery');
+        Yii::app()->clientScript->registerCoreScript('jquery');
     }
 
      public function run() {

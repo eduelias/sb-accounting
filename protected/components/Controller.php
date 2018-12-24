@@ -8,7 +8,7 @@
 		 * @var string the default layout for the controller view. Defaults to '//layouts/column1',
 		 * meaning using a single column layout. See 'protected/views/layouts/column1.php'.
 		 */
-		public $layout = '//layouts/column2';
+		public $layout = '//layouts/column1';
 
 		/**
 		 * @var array context menu items. This property will be assigned to {@link CMenu::items}.
@@ -23,7 +23,16 @@
 
 		public $titulo = 'Operações';
 
-		public function renderPartialWithHisOwnClientScript($view, $data=null, $return=false)
+		public function init()
+		{
+
+			parent::init();
+
+			//Yii::app()->setTheme('gui');
+
+		}
+
+		public function renderPartialWithHisOwnClientScript($view, $data = null, $return = false)
 		{
 
 			$mainClientScript = Yii::app()->clientScript;
@@ -38,6 +47,7 @@
 				echo $output;
 		}
 
+		//public function filters() { return array( 'rights', ); }
 	}
 
 	class ZClientScript extends CClientScript {

@@ -1,6 +1,7 @@
 <style>
 .portlet-title{
-	font-size: 30px !important;
+	font-size: 20px !important;
+	text-align: center !important;
 	font-weight: bolder !important;
 }
 .portlet-content{
@@ -18,25 +19,24 @@ ul.operations li span {
 </style>
 <?php $this->beginContent('//layouts/main'); ?>
 <?php
-	//if (Yii::app()->user->checkAccess("nc.nconf.create")) 
-	//	echo 'EDUARDO';
-	//else
-	//	echo 'LUCIA';
-	$menu = Menu::geraMenu();
-	//print_r(Menu::geraMenu());
-	
-	//print_r($menu);
-	/*$menu=array(
+
+	$menu=array(
 		//array('label'=>'Listar ', 'url'=>array('usuario/index')),
 		array('label'=>'Não Conformidades',
 		'items'=>array(
-			array('label'=>'Nova ', 'url'=>array('nconf/create')),
-			array('label'=>'Emitidas à mim', 'url'=>array('nconf/index')),
-			array('label'=>'Emitidas por mim', 'url'=>array('nconf/indexmine')),
+			array('label'=>'Nova ', 'url'=>array('/nconf/create')),
+			array('label'=>'NCs de Entrada', 'url'=>array('/nconf/index')),
+			array('label'=>'NCs de Saída', 'url'=>array('/nconf/indexmine')),
+			array('label'=>'NCs Públicas', 'url'=>array('/nconf/admin')),
 		)),
 		//array('label'=>'Editar coresolucoes ', 'url'=>array('usuario/update', 'id'=>1)),
-		array('label'=>'Relatorios ', 'url'=>array('admin')),
-	);*/
+		//array('label'=>'Relatorios ', 'url'=>array('admin')),
+		//array('label'=>'Site ', 'items'=>array(
+			//array('label'=>'Inicio','url'=>array('/site')),
+			//array('label'=>'Contato','url'=>array('site/contact'))
+			//)
+		//),
+	);
 ?>
 <div id="menu">
 
@@ -77,9 +77,9 @@ ul.operations li span {
 		?>
 		</div><!-- content -->
 		
-		<div id="conteudo">
+		<div id='conteudo'>
 			<div id="c_container">
-				<?php echo $content; ?>
+					<?php echo $content; ?>
 			</div>
 		</div>
 		<div class="last">

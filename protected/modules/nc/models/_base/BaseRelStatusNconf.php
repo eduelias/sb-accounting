@@ -15,8 +15,8 @@
  * @property integer $iduser
  * @property string $data
  *
- * @property Nconf $idnconf0
  * @property Status $idstatus0
+ * @property Nconf $idnconf0
  * @property User $iduser0
  */
 abstract class BaseRelStatusNconf extends SActiveRecord {
@@ -43,8 +43,8 @@ abstract class BaseRelStatusNconf extends SActiveRecord {
 
 	public function relations() {
 		return array(
-			'idnconf0' => array(self::BELONGS_TO, 'Nconf', 'idnconf'),
 			'idstatus0' => array(self::BELONGS_TO, 'Status', 'idstatus'),
+			'idnconf0' => array(self::BELONGS_TO, 'Nconf', 'idnconf'),
 			'iduser0' => array(self::BELONGS_TO, 'User', 'iduser'),
 		);
 	}

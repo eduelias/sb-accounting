@@ -4,9 +4,6 @@
  * - $this: the CrudCode object
  */
 ?>
-<?php echo '<?php $dialog = $this->beginWidget(\'application.widgets.SComps.SDiag\', array(\'id\'=>\'diag'.$this->modelClass.'\'));?>'."\r\n"; ?>
-<?php echo '<?php $this->endWidget(); ?>' ?>
-
 <div class="form">
 
 <?php $ajax = ($this->enable_ajax_validation) ? 'true' : 'false'; ?>
@@ -18,7 +15,7 @@ $form = $this->beginWidget('GxActiveForm', array(
 ));
 <?php echo '?>'; ?>
 	<p class="note">
-		<span class="required">*</span> Campo Obrigat&oacute;rio.
+		<span class=\"required\">*</span> Campo Obrigat&oacute;rio.
 	</p>
 
 	<?php echo "<?php echo \$form->errorSummary(\$model); ?>\n"; ?>

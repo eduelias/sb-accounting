@@ -1,12 +1,12 @@
-<?php $dsetor = $this->beginWidget('application.widgets.SComps.SDiag', array('id'=>'dSetor'));?>
-<?php $this->endWidget(); ?>
 <div class="form">
+
+
 <?php $form = $this->beginWidget('GxActiveForm', array(
 	'id' => 'setor-form',
 	'enableAjaxValidation' => true,
 ));
 ?>	<p class="note">
-		<span class="required">*</span> Campo Obrigat&oacute;rio.
+		<span class=\"required\">*</span> Campo Obrigat&oacute;rio.
 	</p>
 
 	<?php echo $form->errorSummary($model); ?>
@@ -14,7 +14,6 @@
 		<div class="row">
 		<?php echo $form->labelEx($model,'iduser_responsavel'); ?>
 		<?php echo $form->dropDownList($model, 'iduser_responsavel', GxHtml::listDataEx(User::model()->findAllAttributes(null, true))); ?>
-		<?php echo $dsetor->link(Yii::app()->createUrl('/user/default/create'),'Setor_iduser_responsavel'); ?>
 		<?php echo $form->error($model,'iduser_responsavel'); ?>
 		</div><!-- row -->
 		<div class="row">

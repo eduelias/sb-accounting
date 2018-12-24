@@ -2,14 +2,18 @@
 
 class SiteController extends Controller
 {
-	public $layout='//layouts/column1';
+	public $layout='//layouts/column2';
+	
+	public function allowedActions(){
+		return 'index, login, contact, logout';
+	}
 	/**
 	 * Declares class-based actions.
 	 */
 	public function actions()
 	{
 		return array(
-			// captcha action renders the CAPTCHA image displayed on the contact page
+			// captcha action renders the CAPTCHA image displayed on the contact pagerteste
 			'captcha'=>array(
 				'class'=>'CCaptchaAction',
 				'backColor'=>0xFFFFFF,
@@ -28,11 +32,14 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
-		if (!Yii::app()->user->isGuest)
-			$this->layout='//layouts/column2';
+		$this->layout = '//layouts/column1';
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
 		$this->render('index');
+		/*if(isset(Yii::app()->user->numid))
+			$this->redirect(array('nconf/index'));
+		else
+			$this->actionLogin();*/
 	}
 
 	/**
@@ -72,9 +79,10 @@ class SiteController extends Controller
 	/**
 	 * Displays the login page
 	 */
-	public function actionLogin()
+	public function actionLogin() 
 	{
 		$model=new LoginForm;
+		$this->layout = '//layouts/column1';
 
 		// if it is ajax validation request
 		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
@@ -89,7 +97,7 @@ class SiteController extends Controller
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
-				$this->redirect(Yii::app()->user->returnUrl);
+				$this->redirect(array('nconf/index'));
 		}
 		// display the login form
 		$this->render('login',array('model'=>$model));

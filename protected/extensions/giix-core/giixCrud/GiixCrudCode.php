@@ -78,8 +78,7 @@ class GiixCrudCode extends CrudCode {
 		if ($column->isForeignKey) {
 			$relation = $this->findRelation($modelClass, $column);
 			$relatedModelClass = $relation[3];
-			return "echo \$form->dropDownList(\$model, '{$column->name}', GxHtml::listDataEx({$relatedModelClass}::model()->findAllAttributes(null, true))); ?>\n".
-			       "<?php \$dialog->link(Yii::app()->createUrl('{$relatedModelClass}/create'),CHtml::activeId(\$model,'{$column->name}'))";
+			return "echo \$form->dropDownList(\$model, '{$column->name}', GxHtml::listDataEx({$relatedModelClass}::model()->findAllAttributes(null, true)))";
 		}
 
 		if (strtoupper($column->dbType) == 'TINYINT(1)'
@@ -98,12 +97,6 @@ class GiixCrudCode extends CrudCode {
 				'dateFormat' => 'yy-mm-dd',
 				),
 			));\n";
-		} else if (strtoupper($column->dbType) == 'DECIMAL(6,2)') {
-			return "echo \$form->textArea(\$model, '{$column->name}')".
-			"\$form->widget('application.extensions.moneymask.MMask', array('element'=>'#'.CHtml::activeId($model,'{$column->name}'),
-				'config'=> array('showSymbol'=>true,
-					'symbolStay'=>false,
-					'symbol'=>'R$ ')));\n";
 		} else if (stripos($column->dbType, 'text') !== false) { // Start of CrudCode::generateActiveField code.
 			return "echo \$form->textArea(\$model, '{$column->name}')";
 		} else {
@@ -148,7 +141,7 @@ class GiixCrudCode extends CrudCode {
 				break;
 			case GxActiveRecord::HAS_MANY:
 			case GxActiveRecord::MANY_MANY:
-				return "echo \$form->checkBoxList(\$model, '{$relationName}', GxHtml::encodeEx(GxHtml::listDataEx({$relationModel}::model()->findAllAttributes(null, true)), false, true),array('template'=>'<li><span class=\"lab\">{label}</span><span class=\"inpt\">{input}</span></li>'))";
+				return "echo \$form->checkBoxList(\$model, '{$relationName}', GxHtml::encodeEx(GxHtml::listDataEx({$relationModel}::model()->findAllAttributes(null, true)), false, true))";
 				break;
 		}
 	}
@@ -204,7 +197,7 @@ class GiixCrudCode extends CrudCode {
 					|| strtoupper($column->dbType) == 'BOOLEAN') {
 				return "array(
 					'name' => '{$column->name}',
-					'value' => '(\$data->{$column->name} == 0) ? Yii::t(\\'app\\', \\'No\\') : Yii::t(\\'app\\', \\'Yes\\')',
+					'value' => '(\$data->{$column->name} === 0) ? Yii::t(\\'app\\', \\'No\\') : Yii::t(\\'app\\', \\'Yes\\')',
 					'filter' => array('0' => Yii::t('app', 'No'), '1' => Yii::t('app', 'Yes')),
 					)";
 			} else // Common column.

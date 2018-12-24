@@ -13,32 +13,30 @@
 				$this->$columnName = ($this->$columnName == '1969-12-31 21:00:00')?null:$this->$columnName;                
 			}elseif ($column->dbType == 'timestamp'){
 				$this->$columnName = null;                
-			}elseif ($column->dbType == 'decimal(6,2)'){
-				$this->$columnName = str_replace(',', '.', $this->$columnName);
 			}				               
 		}
 		
 		return parent::beforeSave();	
 	}
 	
-// 	protected function beforeFind()
-// 	{
-// 		foreach($this->metadata->tableSchema->columns as $columnName => $column){
-// 			if (isset($column->$columnName) and ($column->$columnName !== null)){                
-// 				if ($column->dbType == 'date'){                    
-// 					$this->$columnName = date('Y-m-d', CDateTimeParser::parse($this->$columnName, Yii::app()->locale->dateFormat)); 
-// 					$this->$columnName = ($this->$columnName == '1969-12-31')?null:$this->$columnName;               
-// 				}elseif ($column->dbType == 'datetime'){
-// 					$this->$columnName = date('Y-m-d H:i:s', CDateTimeParser::parse($this->$columnName, 'dd/MM/yyyy hh:mm:ss'));  
-// 					$this->$columnName = ($this->$columnName == '1969-12-31 21:00:00')?null:$this->$columnName;                
-// 				}elseif ($column->dbType == 'timestamp'){
-// 					$this->$columnName = null;                
-// 				}				               
-// 			}
-// 		}
+	protected function beforeFind()
+	{
+		foreach($this->metadata->tableSchema->columns as $columnName => $column){
+			if (isset($column->$columnName) and ($column->$columnName !== null)){                
+				if ($column->dbType == 'date'){                    
+					$this->$columnName = date('Y-m-d', CDateTimeParser::parse($this->$columnName, Yii::app()->locale->dateFormat)); 
+					$this->$columnName = ($this->$columnName == '1969-12-31')?null:$this->$columnName;               
+				}elseif ($column->dbType == 'datetime'){
+					$this->$columnName = date('Y-m-d H:i:s', CDateTimeParser::parse($this->$columnName, 'dd/MM/yyyy hh:mm:ss'));  
+					$this->$columnName = ($this->$columnName == '1969-12-31 21:00:00')?null:$this->$columnName;                
+				}elseif ($column->dbType == 'timestamp'){
+					$this->$columnName = null;                
+				}				               
+			}
+		}
 		
-// 		return parent::beforeFind();	 
-// 	}
+		return parent::beforeFind();	 
+	}
  	
 	protected function afterFind()
 	{
@@ -58,8 +56,6 @@
 			}elseif ($column->dbType == 'time'){                                
 				$this->$columnName = Yii::app()->dateFormatter->formatDateTime(CDateTimeParser::parse($this->$columnName, 'hh:mm:ss'));
 				$this->$columnName = ($this->$columnName == '24:00:00')?'':$this->$columnName;                        
-			}elseif ($column->dbType == 'decimal(6,2)'){
-				$this->$columnName = Yii::app()->NumberFormatter->formatCurrency($this->$columnName, 'BRL');
 			}
 			
 		}
@@ -67,14 +63,11 @@
 		return parent::afterFind();
 	}
 
-	public static function getEnum($col)
-	{
+	public static function getEnum($col){
 		$schema = self::model()->getTableSchema()->getColumn($col)->dbType;
 		preg_match_all("/'([^']+)'/",$schema,$matches);
 		$matches = array_combine($matches[1],$matches[1]);
 		return $matches;
 	}
-	
- }
-
+}
 ?>

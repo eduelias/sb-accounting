@@ -5,12 +5,6 @@ class SetorController extends Controller {
 	public $titulo = 'Setor';
 	
 	public $layout = '//layouts/column2';
-	
-	public function filters() {
-	return array(
-			'rights', 
-			);
-	}
 
 	public function actionView($id) {
 		$this->render('view', array(
