@@ -8,8 +8,6 @@
 		
 		public $path = __DIR__;
 		
-		public static $caminho = __DIR__;
-		
 		public $copyfrom = false;
 		
 		public $revision = 0;
@@ -56,19 +54,6 @@
 				array('rev,text_status,repos_text_status,prop_status,repos_prop_status', 'numerical', 'integerOnly'=>true),
 				array('action,text_status,repos_text_status,prop_status,repos_prop_status', 'length', 'max'=>1),
 			);
-		}
-		
-		public static function getVersao(){
-			svn_auth_set_parameter(PHP_SVN_AUTH_PARAM_IGNORE_SSL_VERIFY_ERRORS,1);
-			svn_auth_set_parameter(SVN_AUTH_PARAM_DEFAULT_USERNAME, 'eduardo');
-			svn_auth_set_parameter(SVN_AUTH_PARAM_DEFAULT_PASSWORD, 'yf8mtfq2');
-			try {
-				$a = svn_log(self::$caminho);
-			} catch (Exception $e) {
-				return '1.X';
-			}
-			
-			return '1.'.$a[0]['rev'];
 		}
 		 
 		public function getStatus(){

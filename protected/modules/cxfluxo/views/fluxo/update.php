@@ -4,18 +4,10 @@ $this->breadcrumbs=array(
 	$model->idfluxo=>array('view','id'=>$model->idfluxo),
 	'Editar',
 );
-
-$str = 'cap';
-
-if ($model->idempresaDestino->dogrupo) {
-	$str = 'car';
-}
-
-
 $this->menu = array(
-	array('label'=>'Nova', 'url'=>array($str.'create')),
-	array('label'=>'Baixa', 'url'=>array($str.'index')),
-	array('label'=>'Historico', 'url'=>array($str.'historico')),
+	array('label'=>'Baixa', 'url'=>array('index')),
+	array('label'=>'Inserir Contas a Receber', 'url'=>array('createReceber')),
+	array('label'=>'Inserir Contas a Pagar', 'url'=>array('createPagar')),
 	array('label'=>' | '), 
 	array('label'=>' Ver  ', 'url'=>array('view', 'id'=>$model->idfluxo)),
 	array('label'=>' [Editar] '),

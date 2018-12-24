@@ -21,7 +21,9 @@
 </head>
  
 <body>
-	<div id="myslidemenu" class="jqueryslidemenu"><div style='float:right; padding-top:5px; padding-right:5px; color:#FFF'>&copy;Smilch - Versão <?php echo CSvn::getVersao(); ?></div>
+
+<div >
+	<div id="myslidemenu" class="jqueryslidemenu">
 		<?php $this->widget('application.widgets.SMenu.SMenu',array( 
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/site/index')),
@@ -38,6 +40,8 @@
 						array('label'=>'Permissões', 'url'=>array('/rights')),
 						array('label'=>'Atualizar','url'=>array('/svn')),
 						array('label'=>'Contato','url'=>array('/site/contact')),
+						//array('label'=>'Setores','url'=>array('/setor/index')),
+						//array('label'=>'Status','url'=>array('/status/index'))
 					)
 				),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'hide'=>!Yii::app()->user->isGuest),
@@ -47,38 +51,35 @@
 			'hassubmenuItemCssClass'=>'dropDown',	
 			'activeOpen'=>false,		
 		)); ?>
-	
 	</div><!-- mainmenu -->  
-	<?php if(Yii::app()->user->hasFlash('success')):?>
-	    <div id="message" class="flash-success">
-	        <?php echo Yii::app()->user->getFlash('success'); ?>
-	    </div>
-	<?php endif; ?>
+	<?php if(isset($this->breadcrumbs)):?>
+		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
+			'links'=>$this->breadcrumbs, 
+		)); ?><!-- breadcrumbs -->
+	<?php endif?>
+
 	<?php echo $content; ?>
 
+
+</div><!-- page -->
 <?php
 $str = <<<'EOM'
-
-
 function layout(){
                 var $body = $('#body');
                 var $content = $('#conteudo');
                 var $contentHeader = $('#contentHeader');
 				var $bcrumbs = $('.breadcrumbs');
                 var $contentFooter = $('#contentFooter');
-                var $message = $('#message');
                 var $menu = $('#menu:visible');
                 var $header = $('#header');
-				
+
                 $body.width($(window).width()-$menu.width()-7);
-                $body.height($(window).height()-(3*$message.height())-(4*$bcrumbs.height())-$header.height()-50);
+                $body.height($(window).height()-(4*$bcrumbs.height())-$header.height()-12);
 					
                 $content.height($body.height()-$contentHeader.height()-$contentFooter.height());
                 $content.width($(window).width()-$menu.width()-7);
             }
-		
-			setTimeout("$('#message').hide()",3000);
-			
+
             function toggleDropDownMenu(){
                 $('#menu').toggle();
                 layout();

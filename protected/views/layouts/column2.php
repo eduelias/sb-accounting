@@ -16,36 +16,75 @@ ul.operations li span {
 	padding-top: 0px !important;
 }
 </style>
-<?php $this->beginContent('//layouts/main');?>
+<?php $this->beginContent('//layouts/main'); ?>
+<?php
+	//if (Yii::app()->user->checkAccess("nc.nconf.create")) 
+	//	echo 'EDUARDO';
+	//else
+	//	echo 'LUCIA';
+	$menu = Menu::geraMenu();
+	//print_r(Menu::geraMenu());
+	
+	//print_r($menu);
+	/*$menu=array(
+		//array('label'=>'Listar ', 'url'=>array('usuario/index')),
+		array('label'=>'Não Conformidades',
+		'items'=>array(
+			array('label'=>'Nova ', 'url'=>array('nconf/create')),
+			array('label'=>'Emitidas à mim', 'url'=>array('nconf/index')),
+			array('label'=>'Emitidas por mim', 'url'=>array('nconf/indexmine')),
+		)),
+		//array('label'=>'Editar coresolucoes ', 'url'=>array('usuario/update', 'id'=>1)),
+		array('label'=>'Relatorios ', 'url'=>array('admin')),
+	);*/
+?>
 <div id="menu">
+
 <div class="span-5">
-		<?php
+		
+
+		<?php 
+		//print_r($this->menu);
+			/*
+			$this->beginWidget('zii.widgets.CPortlet');*/ 
 			$this->beginWidget('application.widgets.SMenu.SMenu', array(
-				'items'       => Menu::geraMenu(),
-				'htmlOptions' => array('class' => 'menuDropDown'),
+				'items'=>$menu,
+				'htmlOptions'=>array('class'=>'menuDropDown'),
+				
+				
+				//'firstItemCssClass'=>'title'
+				//'linkOptions'=>array('class'=>'clickable')		
 			));
 			$this->endWidget();
-		?><!-- Top Menu -->
+		?>
+
+		<!-- sidebar -->
 	</div>
 </div>
+
 	<div  id="body" class="shadow">
 		<div id="contentHeader">
 			<?php
-				$this->beginWidget('zii.widgets.CPortlet', array(
-					'title' => $this->titulo,
-				));
-				$this->widget('zii.widgets.CMenu', array(
-					'items'       => $this->menu,
-					'htmlOptions' => array('class' => 'operations'),
-					'encodeLabel' => false,
-				));
-				$this->endWidget();
-			?>
+			$this->beginWidget('zii.widgets.CPortlet', array(
+				'title'=>$this->titulo,
+			));
+			$this->widget('zii.widgets.CMenu', array(
+				'items'=>$this->menu,
+				'htmlOptions'=>array('class'=>'operations'),
+				'encodeLabel'=>false,
+			));
+			$this->endWidget();
+		?>
 		</div><!-- content -->
+		
 		<div id="conteudo">
 			<div id="c_container">
-				<?php echo $content;?>
+				<?php echo $content; ?>
 			</div>
 		</div>
+		<div class="last">
+			
+		</div><!-- sidebar -->
 	</div>
-<?php $this->endContent();?>
+</div>
+<?php $this->endContent(); ?>

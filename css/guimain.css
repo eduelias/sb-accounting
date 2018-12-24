@@ -17,17 +17,17 @@ h1{
     padding:8px 5px;
     color:#171717;
 }
-  
+
 .hidden{display:none;}
 .shadow{
     -moz-box-shadow:rgba(0,0,0,.4) 0px 1px 1px;
     -webkit-box-shadow:rgba(0,0,0,.4) 0px 1px 1px;
 }
 /*** END GLOBAL ****/
-  
+
 /**
  * Buttons
-**/ 
+ **/
 .button,
 input[type=submit],
 input[type=button]{
@@ -350,15 +350,15 @@ ul.menuDropDown li div.opened{
 }
 
 ul.menuDropDown li:hover div.opened{
-    /*background-color:#fff;*/
+    background-color:#fff;
 }
 
 ul.menuDropDown li ul{
     display:none;
-     
-    padding-bottom:5px;
+    padding-left:0;
+    padding-bottom:10px;
 }
- 
+
 ul.menuDropDown li ul li div{
     font-size:11px;
     padding:4px 0px;
@@ -379,25 +379,21 @@ ul.menuDropDown li ul li div.subtitle{
 
 ul.inner li div.title{
 	font-size:11px !important;
-    padding: 0 10px 15px !important;
+    padding:4px 0px !important;
     border:0 !important;
     margin-bottom:0 !important;
+    padding-left:20px !important;
     background: none !important;
     border: none !important;
     color:#0B6677 !important;
     line-height: 10px !important;
     height: 10px !important;
 }
-ul{
-	padding:0px !important;
-}
-ul.inner {
-	margin-left:10px;
-}
+
 ul.inner li {
  	background-attachment: scroll !important;
     background-clip: border-box !important;
-    background-color: transparent !important;
+    background-color: #FFFFFF !important;
     background-image: none !important;
     background-origin: padding-box !important;
     background-position: 0 0 !important;
@@ -407,6 +403,7 @@ ul.inner li {
     border-bottom-style: solid !important;
     border-bottom-width: 0px !important;
     cursor: pointer !important;
+    height: 20px;
 }
 ul.inner li:hover{
 	background-color: #e2eff2 !important;

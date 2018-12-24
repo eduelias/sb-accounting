@@ -366,7 +366,7 @@ class Nconf extends SActiveRecord
 		return $this->coment_count;
 	}
 	
-	public function getDescricao()
+	protected function getDescricao()
 	{
 		$c = new CDbCriteria;
 		
@@ -441,12 +441,10 @@ class Nconf extends SActiveRecord
 		$com = $this->getDescricao();
 		
 		$s = '<div style="font-wheight:normal">';
+		
 		$s .= '[<b>'.$this->getComentCount().'</b>] Comentário(s)<br>';
-		if ($this->getComentCount() >= 1) {	
-			$s .= '<b>Ultimo: </b>'.$this->comentarios[$this->getComentCount()-1]->autor->nome.'<br>';
-			$s .= '<b>em </b>'.$this->comentarios[$this->getComentCount()-1]->data;
-		}
-		//else $s .= 'Não há comentários nesta NC.';
+		$s .= '<b>Ultimo: </b>'.$this->comentarios[$this->getComentCount()-1]->autor->nome.'<br>';
+		$s .= '<b>em </b>'.$this->comentarios[$this->getComentCount()-1]->data;
 		
 		$s .= '</div>';
 		
@@ -470,11 +468,7 @@ class Nconf extends SActiveRecord
 		
 		$com_desc = $this->getDescricao();
 		
-		$this->descricao = 'Não há descrição associada.';
-		
-		if ($this->getComentCount() != 0 and is_object($com_desc)) { 
-			$this->descricao = $com_desc->comentario;
-		}
+		$this->descricao = $com_desc->comentario;
 		
 		$this->trataPrevisao();
 		

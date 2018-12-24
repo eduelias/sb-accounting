@@ -13,18 +13,6 @@
 	border: 1px solid #C9E0ED;
 	width: 450px;
 }
-
-.input_fake{
-	border: thin solid lightgray;
-	margin-top: 5px;
-	height:33px;
-	background: url("../../images/formatmap32x32.png") no-repeat scroll -446px -31px transparent;
-    padding-left: 39px;
-    width: 425px;
-}
-.div_center {
-	text-align:center;
-}
 div.outer {
 	display: inline-block;
 }

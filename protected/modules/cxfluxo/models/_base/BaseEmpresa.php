@@ -42,7 +42,6 @@ abstract class BaseEmpresa extends SActiveRecord {
 			array('nome, descricao', 'length', 'max'=>255),
 			array('descricao, dogrupo', 'default', 'setOnEmpty' => true, 'value' => null),
 			array('idempresa, documento, nome, descricao, dogrupo', 'safe', 'on'=>'search'),
-			array('id_sisfat','unique','on'=>'import')
 		);
 	}
 

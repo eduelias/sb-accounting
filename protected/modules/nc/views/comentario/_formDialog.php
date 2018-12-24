@@ -2,11 +2,11 @@
 	<?php $r = Nconf::getRelevanciaList(); /*?>
 	<b>[<?php echo $r[$model->nc->relevancia]; ?>]</b><br>
 	<b>Setor:</b><?= $model->nc->setor->descricao ?><br>
-	<b>De:</b><?= $model->nc->autor->nome ?> <b>Para:</b><?= $model->nc->alvo->nome ?><br /><br /><?php */ ?>
-	<h3><? echo $model->nc->nc->descricao ?></h3>
-	<?php if ($model->nc->getDescricao() != ''): ?>
+	<b>De:</b><?= $model->nc->autor->nome ?> <b>Para:</b><?= $model->nc->alvo->nome ?><br /><br />
+	<h3><?*/ echo $model->nc->nc->descricao ?></h3>
+	<?php if (is_array($model->nc->comentarios)): ?>
 	<div class="view">
-		<?php echo $model->nc->getDescricao()->comentario; ?>
+		<?php echo $model->nc->comentarios[0]->comentario; ?>
 	</div>
 	<?php endif; ?>
 </div>

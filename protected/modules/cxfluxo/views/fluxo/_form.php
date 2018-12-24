@@ -1,18 +1,6 @@
 <?php $d_empresa = $this->beginWidget('application.widgets.SComps.SDiag', array('id'=>'diagEmpresa'));?>
 <?php $this->endWidget(); ?>
-<style>
-div.form .row {
-    line-height: 32px;
-    margin: 5px 0;
-    padding: 4px;
-    width: 70%;
-}
-fieldset div.row {
-    display: inline-block;
-    float: left;
-    width: 170px !important;
-}
-</style>
+
 <div class="form">
 	<?php $form = $this->beginWidget('GxActiveForm', array('id'=>'fluxo-form',
 		'enableAjaxValidation'=>true, 'htmlOptions' => array('enctype'=>'multipart/form-data')));
@@ -77,9 +65,6 @@ fieldset div.row {
 		<?php echo $form->textField($model, 'valor_fatura', array('maxlength'=>18));?>
 		<?php echo $form->error($model, 'valor_fatura');?>
 		</div><!-- row -->
-		</fieldset>
-		<fieldset>
-		<legend>Dados da Duplicata/Boleto</legend>
 		<div class="row">
 		<?php echo $form->labelEx($model, 'data_vencimento');?>
 		<?php
@@ -92,17 +77,6 @@ fieldset div.row {
 		?>
 		<?php echo $form->error($model, 'data_vencimento');?>
 		</div>
-		<div class="row">
-		<?php echo $form->labelEx($model, 'valor_boleto');?>
-		<?php $form->widget('application.extensions.price.PriceMask', array('element'=>'#Fluxo_valor_boleto')); ?>
-		<?php echo $form->textField($model, 'valor_boleto', array('maxlength'=>18));?>
-		<?php echo $form->error($model, 'valor_boleto');?>
-		<div class="hint">Caso não haja boleto, por favor, deixar em branco.</div>
-		</div><!-- row -->
-		<?php /* ?><div class="row">
-		<?php echo $model->getTotal().' + '. $model->valor_boleto.' <> '.$model->valor_fatura;?>
-		
-		</div><!-- row --><?php */?>
 		</fieldset><!-- row -->
 		<div class="row">
 		<?php echo $form->labelEx($model, 'file');?>
